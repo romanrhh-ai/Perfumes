@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | AURA PERFUMES</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #faf7f5; color: #333; }
+        header { background-color: #241b1f; color: white; padding: 15px 7%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+        .logo { font-size: 26px; font-weight: bold; color: #e8b4b8; text-decoration: none; }
+        nav { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .nav-item { position: relative; }
+        nav a { color: white; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-block; padding: 5px 0; }
+        nav a:hover { color: #e8b4b8; }
+        .dropdown-content { display: none; position: absolute; background-color: #241b1f; min-width: 170px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 6px; overflow: hidden; top: 100%; left: 0; }
+        .dropdown-content a { color: white; padding: 12px 16px; display: block; text-align: left; font-size: 13px; }
+        .dropdown-content a:hover { background-color: #b76e79; }
+        .nav-item:hover .dropdown-content { display: block; }
+        .carrito-nav { background-color: #b76e79; padding: 7px 14px; border-radius: 8px; display: flex; align-items: center; gap: 6px; }
+
+        section { padding: 50px 8%; max-width: 900px; margin: auto; }
+        h2 { color: #9b5360; font-size: 34px; margin-bottom: 25px; text-align: center; }
+        
+        .info-contacto { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 30px; text-align: center; }
+        .info-contacto p { font-size: 18px; margin: 10px 0; color: #444; }
+        .telefono { font-size: 22px; font-weight: bold; color: #9b5360; text-decoration: none; }
+        
+        .seccion-mapa { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 30px; text-align: center; }
+        .seccion-mapa h3 { color: #9b5360; margin-bottom: 15px; font-size: 22px; }
+        .map-container { position: relative; width: 100%; height: 320px; border-radius: 10px; overflow: hidden; margin-top: 15px; }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
+        .enlace-mapa { display: inline-block; margin-top: 15px; background-color: #b76e79; color: white; padding: 10px 20px; text-decoration: none; border-radius: 7px; font-weight: bold; }
+        .enlace-mapa:hover { background-color: #963f4d; }
+
+        /* Redes Sociales con Logotipos Oficiales */
+        .redes-sociales { text-align: center; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .redes-sociales h3 { color: #9b5360; margin-bottom: 20px; font-size: 22px; }
+        .iconos-redes { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .icono-red { display: flex; align-items: center; gap: 8px; background-color: #faf7f5; border: 1px solid #ddd; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; color: #333; transition: 0.3s; }
+        .icono-red:hover { border-color: #b76e79; background-color: #f1e7e8; }
+        .icono-red img { width: 24px; height: 24px; object-fit: contain; }
+
+        .caja-satisfaccion { text-align: center; background-color: #f1e7e8; padding: 30px; border-radius: 12px; border: 1px solid #e8b4b8; }
+        .caja-satisfaccion h3 { color: #9b5360; margin-bottom: 10px; font-size: 22px; }
+        .caja-satisfaccion p { color: #666; margin-bottom: 20px; }
+        .btn-satisfaccion { display: inline-block; background-color: #b76e79; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; }
+        .btn-satisfaccion:hover { background-color: #963f4d; }
+
+        footer { background-color: #241b1f; color: #ccc; text-align: center; padding: 35px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUKORmsyYs-vOr6K0FE69wDL5dQiDMDjs9NY1Xf3ZdF7YlFs4NV6fDODQ&s=10" alt="Logo" class="logo-img">
+        <a href="index.html" class="logo">AURA PERFUMES</a>
+    </div>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <div class="nav-item">
+            <a href="productos.html">Perfumes ▾</a>
+            <div class="dropdown-content">
+                <a href="productos.html?cat=hombre">Hombre</a>
+                <a href="productos.html?cat=mujer">Mujer</a>
+                <a href="productos.html?cat=unisex">Unisex</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="contacto.html">Contacto ▾</a>
+            <div class="dropdown-content">
+                <a href="satisfaccion.html">Satisfacción al cliente</a>
+            </div>
+        </div>
+        <a href="proposito.html">Propósito</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="carrito.html" class="carrito-nav">🛒 Carrito</a>
+    </nav>
+</header>
+<main>
+    <section>
+        <h2>📞 Contacto y Ubicación</h2>
+        
+        <div class="info-contacto">
+            <p>Comunícate con nosotros vía telefónica o WhatsApp:</p>
+            <p><a href="tel:5666778899" class="telefono">📱 56 66 77 88 99</a></p>
+        </div>
+
+        <div class="seccion-mapa">
+            <h3>Nuestra Tienda Física</h3>
+            <p>Visítanos y descubre todas nuestras fragancias en persona.</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760!2d-99.15!3d19.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDM2JzAwLjAiTiA5OcKwMDknMDAuMCJX!5e0!3m2!1ses-419!2smx!4v1650000000000!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <a href="https://maps.app.goo.gl/2SESVWiKx7tgCuq3A?g_st=ic" target="_blank" class="enlace-mapa">📍 Abrir ubicación en Google Maps</a>
+        </div>
+
+        <div class="redes-sociales">
+            <h3>Síguenos en Redes Sociales</h3>
+            <div class="iconos-redes">
+                <a href="https://tiktok.com" target="_blank" class="icono-red"><img src="https://imgs.search.brave.com/mqi8f-RvhYKfnvAjbROCHefINvwQ11im60jc8Y2owrw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMzEv/NzM3LzIyOC9zbWFs/bC90aWt0b2stbG9n/by10aWt0b2stYXBw/LXNvY2lhbC1tZWRp/YS1pY29ucy1mcmVl/LXBuZy5wbmc" alt="TikTok"> TikTok</a>
+                <a href="https://facebook.com" target="_blank" class="icono-red"><img src="https://imgs.search.brave.com/FIbW8lLHYsQWNs5EFKCCbxEK6k8TIC2VYBjJLqMNkn4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL2ZyZWUv/cG5nLTI1Ni9mcmVl/LWZhY2Vib29rLWlj/b24tc3ZnLWRvd25s/b2FkLXBuZy00MzI1/MDcucG5nP2Y9d2Vi/cCZ3PTEyOA" alt="Facebook"> Facebook</a>
+                <a href="https://youtube.com" target="_blank" class="icono-red"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="YouTube"> YouTube</a>
+                <a href="https://instagram.com" target="_blank" class="icono-red"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="Instagram"> Instagram</a>
+            </div>
+        </div>
+
+        <div class="caja-satisfaccion">
+            <h3>⭐ Satisfacción al Cliente</h3>
+            <p>Tu opinión es muy importante para mejorar nuestro servicio y calidad.</p>
+            <a href="satisfaccion.html" class="btn-satisfaccion">Ir a Encuesta de Satisfacción</a>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>© 2026 <strong>AURA PERFUMES</strong></p>
+</footer>
+</body>
+</html>

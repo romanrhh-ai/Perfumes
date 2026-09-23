@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito y Pagos | AURA PERFUMES</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #faf7f5; color: #333; }
+        header { background-color: #241b1f; color: white; padding: 15px 7%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+        .logo { font-size: 26px; font-weight: bold; color: #e8b4b8; text-decoration: none; }
+        nav { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .nav-item { position: relative; }
+        nav a { color: white; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-block; padding: 5px 0; }
+        nav a:hover { color: #e8b4b8; }
+        .dropdown-content { display: none; position: absolute; background-color: #241b1f; min-width: 170px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 6px; overflow: hidden; top: 100%; left: 0; }
+        .dropdown-content a { color: white; padding: 12px 16px; display: block; text-align: left; font-size: 13px; }
+        .dropdown-content a:hover { background-color: #b76e79; }
+        .nav-item:hover .dropdown-content { display: block; }
+        .carrito-nav { background-color: #b76e79; padding: 7px 14px; border-radius: 8px; display: flex; align-items: center; gap: 6px; }
+
+        section { padding: 40px 8%; max-width: 900px; margin: auto; }
+        h2 { text-align: center; color: #9b5360; font-size: 34px; margin-bottom: 25px; }
+        #listaCarrito { margin-bottom: 20px; }
+        .item-carrito { background-color: white; padding: 15px; margin-bottom: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .item-carrito button { background-color: #963f4d; color: white; border: none; padding: 7px 12px; border-radius: 5px; cursor: pointer; }
+        .total { text-align: right; font-size: 22px; color: #9b5360; font-weight: bold; }
+        .donacion-carrito { text-align: right; color: #9b5360; font-weight: bold; font-size: 16px; margin-bottom: 30px; }
+        
+        .metodos-pago { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .metodos-pago h3 { color: #9b5360; margin-bottom: 20px; font-size: 20px; text-align: center; }
+        .opciones-pago { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 15px; }
+        .tarjeta-pago { border: 2px solid #ddd; padding: 15px; border-radius: 10px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .tarjeta-pago:hover { border-color: #b76e79; background-color: #faf7f5; }
+        .tarjeta-pago img { width: 90px; height: 45px; object-fit: contain; margin-bottom: 10px; }
+        .tarjeta-pago h4 { color: #4b3036; font-size: 14px; }
+
+        .seccion-seguridad { margin-top: 30px; background-color: #f1e7e8; border: 1px solid #e8b4b8; padding: 25px; border-radius: 12px; }
+        .seccion-seguridad h3 { color: #9b5360; margin-bottom: 10px; font-size: 18px; }
+        .seccion-seguridad p { color: #555; line-height: 1.6; font-size: 14px; }
+
+        /* Modales emergentes */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+        .modal-contenido { background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 450px; text-align: center; position: relative; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        .modal-contenido h3 { color: #9b5360; margin-bottom: 15px; }
+        .modal-contenido p { font-size: 14px; color: #555; margin-bottom: 12px; line-height: 1.5; }
+        .clabe-caja { background: #f9f9f9; padding: 12px; border: 2px dashed #b76e79; font-size: 18px; font-weight: bold; color: #333; margin: 15px 0; letter-spacing: 1px; }
+        .cerrar-modal { position: absolute; top: 10px; right: 15px; font-size: 22px; cursor: pointer; color: #777; }
+        .form-modal input { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+        .btn-modal { background: #b76e79; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+        .btn-modal:hover { background: #963f4d; }
+
+        footer { background-color: #241b1f; color: #ccc; text-align: center; padding: 35px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUKORmsyYs-vOr6K0FE69wDL5dQiDMDjs9NY1Xf3ZdF7YlFs4NV6fDODQ&s=10" alt="Logo" class="logo-img">
+        <a href="index.html" class="logo">AURA PERFUMES</a>
+    </div>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <div class="nav-item">
+            <a href="productos.html">Perfumes ▾</a>
+            <div class="dropdown-content">
+                <a href="productos.html?cat=hombre">Hombre</a>
+                <a href="productos.html?cat=mujer">Mujer</a>
+                <a href="productos.html?cat=unisex">Unisex</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="contacto.html">Contacto ▾</a>
+            <div class="dropdown-content">
+                <a href="satisfaccion.html">Satisfacción al cliente</a>
+            </div>
+        </div>
+        <a href="proposito.html">Propósito</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="carrito.html" class="carrito-nav">🛒 Carrito (<span id="contador">0</span>)</a>
+    </nav>
+</header>
+<main>
+    <section>
+        <h2>🛒 Tu Carrito de Compras</h2>
+        <div id="listaCarrito"><p style="text-align:center;">Tu carrito está vacío.</p></div>
+        <div class="total">Total: $<span id="total">0</span> MXN</div>
+        <div class="donacion-carrito">Donación del 5% para niños con cáncer: $<span id="donacion">0</span> MXN</div>
+
+        <div class="metodos-pago">
+            <h3>Selecciona tu Método de Pago</h3>
+            <div class="opciones-pago">
+                <div class="tarjeta-pago" onclick="abrirModalPayPal()">
+                    <img src="https://www.vectorlogo.zone/logos/paypal/paypal-icon.svg" alt="PayPal">
+                    <h4>PayPal</h4>
+                </div>
+                <div class="tarjeta-pago" onclick="abrirModalTarjeta()">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTys8YBuugAKI0ssat9ZIi2Vpsxct4X_M4BfNL8Ic6Hx8ZHkPloVqhdxa0&s=10" alt="Tarjeta">
+                    <h4>Crédito / Débito</h4>
+                </div>
+                <div class="tarjeta-pago" onclick="abrirModalOxxo()">
+                    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Oxxo_Logo.svg/3840px-Oxxo_Logo.svg.png" alt="OXXO Pay">
+                    <h4>Spin / OXXO Pay</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion-seguridad">
+            <h3>🔒 Seguridad en las Transacciones de Pago</h3>
+            <p>Resguardamos tu privacidad bajo protocolos de <strong>Cifrado SSL de 256 bits</strong>, garantizando que tu información bancaria y personal viaje protegida mediante certificación internacional PCI-DSS.</p>
+        </div>
+    </section>
+</main>
+
+<!-- MODAL OXXO -->
+<div id="modalOxxo" class="modal">
+    <div class="modal-contenido">
+        <span class="cerrar-modal" onclick="cerrarModales()">&times;</span>
+        <h3>Pago en Efectivo - OXXO / Spin</h3>
+        <p>Puedes acudir a tu tienda OXXO más cercana y dictar la siguiente <strong>CLABE STP</strong> para completar tu pago:</p>
+        <div class="clabe-caja" id="clabeGenerada">646180157004928135</div>
+        <p style="color: #b76e79; font-weight: bold;">⚠️ Esta referencia tiene una caducidad exacta de 8 horas para realizar el depósito.</p>
+        <button class="btn-modal" onclick="cerrarModales()">Entendido</button>
+    </div>
+</div>
+
+<!-- MODAL TARJETA -->
+<div id="modalTarjeta" class="modal">
+    <div class="modal-contenido">
+        <span class="cerrar-modal" onclick="cerrarModales()">&times;</span>
+        <h3>Pago con Tarjeta de Crédito / Débito</h3>
+        <form class="form-modal" onsubmit="event.preventDefault(); alert('¡Pago procesado de forma segura exitosamente!'); window.location.href='index.html';">
+            <input type="text" placeholder="Nombre completo del titular" required>
+            <input type="text" placeholder="Número de tarjeta (16 dígitos)" maxlength="16" required>
+            <input type="text" placeholder="MM / AA" maxlength="5" required>
+            <input type="password" placeholder="CVV (3 dígitos)" maxlength="4" required>
+            <button type="submit" class="btn-modal">Pagar Ahora</button>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL PAYPAL -->
+<div id="modalPayPal" class="modal">
+    <div class="modal-contenido">
+        <span class="cerrar-modal" onclick="cerrarModales()">&times;</span>
+        <h3>Iniciar Sesión en PayPal</h3>
+        <p>Página de prueba segura. Ingresa tus datos de acceso PayPal:</p>
+        <form class="form-modal" onsubmit="event.preventDefault(); alert('¡Autenticación de PayPal exitosa! Redirigiendo...'); window.location.href='index.html';">
+            <input type="email" placeholder="Correo electrónico de PayPal" required>
+            <input type="password" placeholder="Contraseña" required>
+            <button type="submit" class="btn-modal">Iniciar Sesión</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 <strong>AURA PERFUMES</strong></p>
+</footer>
+<script>
+    let carrito = JSON.parse(localStorage.getItem("carritoAura")) || [];
+    let total = carrito.reduce((acc, item) => acc + item.precio, 0);
+    renderizarCarrito();
+
+    function eliminar(indice) {
+        total -= carrito[indice].precio;
+        carrito.splice(indice, 1);
+        localStorage.setItem("carritoAura", JSON.stringify(carrito));
+        renderizarCarrito();
+    }
+
+    function renderizarCarrito() {
+        let lista = document.getElementById("listaCarrito");
+        let contador = document.getElementById("contador");
+        let totalElemento = document.getElementById("total");
+        let donacionElemento = document.getElementById("donacion");
+
+        if(contador) contador.textContent = carrito.length;
+        if(totalElemento) totalElemento.textContent = total.toLocaleString("es-MX");
+        if(donacionElemento) donacionElemento.textContent = (total * 0.05).toLocaleString("es-MX");
+
+        if (carrito.length === 0) {
+            lista.innerHTML = '<p style="text-align:center; color: #777;">Tu carrito está vacío.</p>';
+            return;
+        }
+
+        lista.innerHTML = "";
+        carrito.forEach(function(producto, indice) {
+            let elemento = document.createElement("div");
+            elemento.className = "item-carrito";
+            elemento.innerHTML = `<span><strong>${producto.nombre}</strong> - $${producto.precio.toLocaleString("es-MX")} MXN</span><button onclick="eliminar(${indice})">Eliminar</button>`;
+            lista.appendChild(elemento);
+        });
+    }
+
+    function abrirModalOxxo() {
+        let aleatorio = "646" + Math.floor(100000000000000 + Math.random() * 900000000000000);
+        document.getElementById("clabeGenerada").textContent = aleatorio;
+        document.getElementById("modalOxxo").style.display = "flex";
+    }
+    function abrirModalTarjeta() { document.getElementById("modalTarjeta").style.display = "flex"; }
+    function abrirModalPayPal() { document.getElementById("modalPayPal").style.display = "flex"; }
+    function cerrarModales() {
+        document.getElementById("modalOxxo").style.display = "none";
+        document.getElementById("modalTarjeta").style.display = "none";
+        document.getElementById("modalPayPal").style.display = "none";
+    }
+</script>
+</body>
+</html>

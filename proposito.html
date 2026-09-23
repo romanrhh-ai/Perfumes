@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propósito | AURA PERFUMES</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #faf7f5; color: #333; }
+        header { background-color: #241b1f; color: white; padding: 15px 7%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+        .logo { font-size: 26px; font-weight: bold; color: #e8b4b8; text-decoration: none; }
+        nav { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .nav-item { position: relative; }
+        nav a { color: white; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-block; padding: 5px 0; }
+        nav a:hover { color: #e8b4b8; }
+        .dropdown-content { display: none; position: absolute; background-color: #241b1f; min-width: 170px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 6px; overflow: hidden; top: 100%; left: 0; }
+        .dropdown-content a { color: white; padding: 12px 16px; display: block; text-align: left; font-size: 13px; }
+        .dropdown-content a:hover { background-color: #b76e79; }
+        .nav-item:hover .dropdown-content { display: block; }
+        .carrito-nav { background-color: #b76e79; padding: 7px 14px; border-radius: 8px; display: flex; align-items: center; gap: 6px; }
+
+        section { padding: 40px 8%; max-width: 900px; margin: auto; }
+        h2 { color: #9b5360; font-size: 34px; margin-bottom: 25px; text-align: center; }
+        
+        .imagenes-contenedor { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .imagen-seccion { width: 100%; height: 250px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background-color: white; padding: 5px; }
+
+        .caja-prop { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 25px; border-left: 5px solid #b76e79; }
+        .caja-prop h3 { color: #823844; margin-bottom: 12px; font-size: 22px; }
+        .caja-prop p { color: #222; font-size: 16px; line-height: 1.7; font-weight: 500; }
+
+        footer { background-color: #241b1f; color: #ccc; text-align: center; padding: 35px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUKORmsyYs-vOr6K0FE69wDL5dQiDMDjs9NY1Xf3ZdF7YlFs4NV6fDODQ&s=10" alt="Logo" class="logo-img">
+        <a href="index.html" class="logo">AURA PERFUMES</a>
+    </div>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <div class="nav-item">
+            <a href="productos.html">Perfumes ▾</a>
+            <div class="dropdown-content">
+                <a href="productos.html?cat=hombre">Hombre</a>
+                <a href="productos.html?cat=mujer">Mujer</a>
+                <a href="productos.html?cat=unisex">Unisex</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="contacto.html">Contacto ▾</a>
+            <div class="dropdown-content">
+                <a href="satisfaccion.html">Satisfacción al cliente</a>
+            </div>
+        </div>
+        <a href="proposito.html">Propósito</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="carrito.html" class="carrito-nav">🛒 Carrito (<span id="contador">0</span>)</a>
+    </nav>
+</header>
+<main>
+    <section>
+        <h2>Nuestro Propósito con Causa</h2>
+        
+        <!-- Tus dos imágenes para Propósito -->
+        <div class="imagenes-contenedor">
+            <img src="https://imgs.search.brave.com/aUAzkIQuiaRcsDJN0hW7CInZ47uSuJ23j5yNp6feyyA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMDMv/MTA0LzI0NC9zbWFs/bC9saXR0bGUtY2hp/bGQtZmlnaHQtYWdh/aW5zdC1jYW5jZXIt/ZnJlZS12ZWN0b3Iu/anBn" alt="Niño lucha contra el cáncer" class="imagen-seccion">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1qCTvwAUyYySm5vU0tqWUz0OqvfD-AV_L00bcECcehaVpxCJJw4WpL-L1&s=10" alt="Apoyo con Causa" class="imagen-seccion">
+        </div>
+
+        <div class="caja-prop">
+            <h3>Fragancias con Sentido Humano</h3>
+            <p>En AURA PERFUMES creemos firmemente que la belleza y la elegancia deben ir de la mano de la solidaridad y el impacto social positivo en nuestra comunidad.</p>
+        </div>
+
+        <div class="caja-prop">
+            <h3>Apoyo a Niños con Cáncer</h3>
+            <p>El 5% de cada adquisición realizada en nuestra plataforma es destinado de forma íntegra a fundaciones e instituciones dedicadas a la investigación y tratamiento médico para niños con cáncer.</p>
+        </div>
+
+        <div class="caja-prop">
+            <h3>Una Fragancia que Deja Huella</h3>
+            <p>No solo buscamos que destaques por tu aroma único y sofisticado, sino también por haber contribuido a cambiar y salvar vidas a través de una causa noble.</p>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>© 2026 <strong>AURA PERFUMES</strong></p>
+</footer>
+<script>
+    let carrito = JSON.parse(localStorage.getItem("carritoAura")) || [];
+    let contador = document.getElementById("contador");
+    if(contador) contador.textContent = carrito.length;
+</script>
+</body>
+</html>

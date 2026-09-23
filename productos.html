@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfumes | AURA PERFUMES</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #faf7f5; color: #333; }
+        header { background-color: #241b1f; color: white; padding: 15px 7%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+        .logo { font-size: 26px; font-weight: bold; color: #e8b4b8; text-decoration: none; }
+        nav { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .nav-item { position: relative; }
+        nav a { color: white; text-decoration: none; font-weight: bold; font-size: 14px; display: inline-block; padding: 5px 0; }
+        nav a:hover { color: #e8b4b8; }
+        .dropdown-content { display: none; position: absolute; background-color: #241b1f; min-width: 170px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 6px; overflow: hidden; top: 100%; left: 0; }
+        .dropdown-content a { color: white; padding: 12px 16px; display: block; text-align: left; font-size: 13px; }
+        .dropdown-content a:hover { background-color: #b76e79; }
+        .nav-item:hover .dropdown-content { display: block; }
+        .carrito-nav { background-color: #b76e79; padding: 7px 14px; border-radius: 8px; display: flex; align-items: center; gap: 6px; }
+
+        .barra-superior-catalogo { padding: 40px 8% 10px 8%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        h2 { color: #9b5360; font-size: 34px; }
+        
+        .buscador-contenedor { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .buscador-contenedor input { padding: 10px 15px; width: 220px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+        
+        .btn-discreto-carrito { background-color: #38272d; color: #f1c5c9; padding: 9px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+        .btn-discreto-carrito:hover { background-color: #b76e79; color: white; }
+
+        .filtro-activo-banner { padding: 0 8%; margin-bottom: 10px; font-size: 15px; color: #9b5360; font-weight: bold; }
+        .btn-ver-todos { background: #b76e79; color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; margin-left: 10px; font-size: 12px; }
+
+        section { padding: 10px 8% 60px 8%; }
+        .productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        .producto { background-color: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: 0.3s; }
+        .producto:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .imagen { height: 180px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
+        .imagen img { width: 100%; height: 100%; object-fit: contain; border-radius: 10px; }
+        .producto h3 { color: #4b3036; margin-bottom: 8px; font-size: 17px; }
+        .producto p { color: #777; min-height: 35px; font-size: 13px; }
+        .precio { display: block; color: #a45261; font-size: 20px; font-weight: bold; margin: 12px 0; }
+        .producto button { border: none; background-color: #b76e79; color: white; padding: 10px 18px; border-radius: 7px; cursor: pointer; font-weight: bold; }
+        .producto button:hover { background-color: #963f4d; }
+        
+        .badge-cat { display: inline-block; background: #f1e7e8; color: #9b5360; font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 4px; margin-bottom: 8px; text-transform: uppercase; }
+
+        footer { background-color: #241b1f; color: #ccc; text-align: center; padding: 35px; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUKORmsyYs-vOr6K0FE69wDL5dQiDMDjs9NY1Xf3ZdF7YlFs4NV6fDODQ&s=10" alt="Logo" class="logo-img">
+        <a href="index.html" class="logo">AURA PERFUMES</a>
+    </div>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <div class="nav-item">
+            <a href="productos.html">Perfumes ▾</a>
+            <div class="dropdown-content">
+                <a href="productos.html?cat=hombre">Hombre</a>
+                <a href="productos.html?cat=mujer">Mujer</a>
+                <a href="productos.html?cat=unisex">Unisex</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="contacto.html">Contacto ▾</a>
+            <div class="dropdown-content">
+                <a href="satisfaccion.html">Satisfacción al cliente</a>
+            </div>
+        </div>
+        <a href="proposito.html">Propósito</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="carrito.html" class="carrito-nav">🛒 Carrito (<span id="contador">0</span>)</a>
+    </nav>
+</header>
+<main>
+    <div class="barra-superior-catalogo">
+        <h2 id="titulo-catalogo">Catálogo de Perfumes</h2>
+        <div class="buscador-contenedor">
+            <input type="text" id="buscador" placeholder="🔍 Buscar perfume..." onkeyup="filtrarProductos()">
+            <a href="carrito.html" class="btn-discreto-carrito">🛒 Ver Carrito</a>
+        </div>
+    </div>
+    
+    <div id="banner-filtro" class="filtro-activo-banner" style="display:none;">
+        Mostrando categoría: <span id="nombre-categoria"></span> <button class="btn-ver-todos" onclick="limpiarCategoria()">Ver Todos</button>
+    </div>
+
+    <section>
+        <div class="productos" id="contenedor-productos">
+            <!-- Perfume 1 (Mujer) -->
+            <article class="producto" data-nombre="aura rose" data-cat="mujer"><span class="badge-cat">Mujer</span><div class="imagen"><img src="https://www.elizabetharden.co.uk/cdn/shop/files/story-3.jpg?v=1771418952&width=1600" alt="Aura Rose"></div><h3>1. Aura Rose</h3><p>Fragancia floral y elegante.</p><span class="precio">$899 MXN</span><button onclick="agregar('Aura Rose',899)">Agregar al carrito</button></article>
+            <!-- Perfume 2 (Mujer) -->
+            <article class="producto" data-nombre="pink essence" data-cat="mujer"><span class="badge-cat">Mujer</span><div class="imagen"><img src="https://http2.mlstatic.com/D_NQ_NP_845314-MLM100978079713_122025-O.webp" alt="Pink Essence"></div><h3>2. Pink Essence</h3><p>Aroma dulce con notas florales.</p><span class="precio">$799 MXN</span><button onclick="agregar('Pink Essence',799)">Agregar al carrito</button></article>
+            <!-- Perfume 3 (Mujer) -->
+            <article class="producto" data-nombre="bloom" data-cat="mujer"><span class="badge-cat">Mujer</span><div class="imagen"><img src="https://www.obsequiosvero.com/cdn/shop/products/JAFRAYOUBLOOMPERFUMEDEMUJER.jpg?v=1661030180" alt="Bloom"></div><h3>3. Bloom</h3><p>Perfume floral para mujer.</p><span class="precio">$950 MXN</span><button onclick="agregar('Bloom',950)">Agregar al carrito</button></article>
+            <!-- Perfume 4 (Hombre) -->
+            <article class="producto" data-nombre="golden aura" data-cat="hombre"><span class="badge-cat">Hombre</span><div class="imagen"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6AFzab6H7gXW_n12v4BcsjKi5GowIG9fGWx8R4c1tfCgDeT80xe0FCvw&s=10" alt="Golden Aura"></div><h3>4. Golden Aura</h3><p>Fragancia elegante y sofisticada.</p><span class="precio">$1,199 MXN</span><button onclick="agregar('Golden Aura',1199)">Agregar al carrito</button></article>
+            <!-- Perfume 5 (Mujer) -->
+            <article class="producto" data-nombre="velvet rose" data-cat="mujer"><span class="badge-cat">Mujer</span><div class="imagen"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAzAMGtPgxwWMcGUtm5t6s52hfzFZdBUUFZ3p3mPH6zQkkyxMsGtWD68w&s=10" alt="Velvet Rose"></div><h3>5. Velvet Rose</h3><p>Aroma intenso de rosas.</p><span class="precio">$999 MXN</span><button onclick="agregar('Velvet Rose',999)">Agregar al carrito</button></article>
+            <!-- Perfume 6 (Mujer, Hombre -> Unisex) -->
+            <article class="producto" data-nombre="sweet berry" data-cat="unisex"><span class="badge-cat">Unisex</span><div class="imagen"><img src="https://filledwithbarakah.com/cdn/shop/files/C2B8BA64-BE75-4232-869B-18324538DC90_1200x1200.jpg?v=1767547760" alt="Sweet Berry"></div><h3>6. Sweet Berry</h3><p>Fragancia dulce y juvenil.</p><span class="precio">$699 MXN</span><button onclick="agregar('Sweet Berry',699)">Agregar al carrito</button></article>
+            <!-- Perfume 7 (Hombre) -->
+            <article class="producto" data-nombre="midnight" data-cat="hombre"><span class="badge-cat">Hombre</span><div class="imagen"><img src="https://m.media-amazon.com/images/I/61ubI9W2iIL._AC_UF350,350_QL80_.jpg" alt="Midnight"></div><h3>7. Midnight</h3><p>Perfume para ocasiones especiales.</p><span class="precio">$1,099 MXN</span><button onclick="agregar('Midnight',1099)">Agregar al carrito</button></article>
+            <!-- Perfume 8 (Mujer) -->
+            <article class="producto" data-nombre="floral dream" data-cat="mujer"><span class="badge-cat">Mujer</span><div class="imagen"><img src="https://verseperfume.com/cdn/shop/files/verse-sdv-floral-dream-mist-hero.png?v=1779896733" alt="Floral Dream"></div><h3>8. Floral Dream</h3><p>Mezcla de flores y frutas.</p><span class="precio">$849 MXN</span><button onclick="agregar('Floral Dream',849)">Agregar al carrito</button></article>
+            <!-- Perfume 9 (Mujer) -->
+            <article class="producto" data-nombre="elegant lady" data-cat="mujer"><span class="badge-cat">Mujer</span><div class="imagen"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpmwmWHIar4N7Q0ZDeGPSPo9yY4kB3XzQIrEaM92D_HLfb54ylkqgYx0SX&s=10" alt="Elegant Lady"></div><h3>9. Elegant Lady</h3><p>Fragancia femenina elegante.</p><span class="precio">$1,049 MXN</span><button onclick="agregar('Elegant Lady',1049)">Agregar al carrito</button></article>
+            <!-- Perfume 10 (Mujer, Hombre -> Unisex) -->
+            <article class="producto" data-nombre="citrus fresh" data-cat="unisex"><span class="badge-cat">Unisex</span><div class="imagen"><img src="https://cdnx.jumpseller.com/pastor-fragrances/image/75767742/xc05.png?1776118782" alt="Citrus Fresh"></div><h3>10. Citrus Fresh</h3><p>Aroma fresco con notas cítricas.</p><span class="precio">$749 MXN</span><button onclick="agregar('Citrus Fresh',749)">Agregar al carrito</button></article>
+            <!-- Perfume 11 (Hombre) -->
+            <article class="producto" data-nombre="green nature" data-cat="hombre"><span class="badge-cat">Hombre</span><div class="imagen"><img src="https://thumbs.dreamstime.com/b/fragmento-de-perfume-verde-fragancia-naturaleza-musgo-bosque-aroma-belleza-producto-cosmético-fresco-natural-frasco-escondido-396582749.jpg" alt="Green Nature"></div><h3>11. Green Nature</h3><p>Fragancia fresca y natural.</p><span class="precio">$799 MXN</span><button onclick="agregar('Green Nature',799)">Agregar al carrito</button></article>
+            <!-- Perfume 12 (Hombre) -->
+            <article class="producto" data-nombre="black night" data-cat="hombre"><span class="badge-cat">Hombre</span><div class="imagen"><img src="https://images.snoonu.com/image_product/2022-06/lkTaqmNfy9.png" alt="Black Night"></div><h3>12. Black Night</h3><p>Aroma profundo y elegante.</p><span class="precio">$1,099 MXN</span><button onclick="agregar('Black Night',1099)">Agregar al carrito</button></article>
+            <!-- Perfume 13 (Mujer, Hombre -> Unisex) -->
+            <article class="producto" data-nombre="intense" data-cat="unisex"><span class="badge-cat">Unisex</span><div class="imagen"><img src="https://www.yslbeauty.com.mx/on/demandware.static/-/Sites-ysl-mx-Library/es_MX/dw7571dc3a/images/nav/section-04-the-icons-img01.jpg" alt="Intense"></div><h3>13. Intense</h3><p>Fragancia intensa y duradera.</p><span class="precio">$1,299 MXN</span><button onclick="agregar('Intense',1299)">Agregar al carrito</button></article>
+            <!-- Perfume 14 (Mujer, Hombre -> Unisex) -->
+            <article class="producto" data-nombre="ocean blue" data-cat="unisex"><span class="badge-cat">Unisex</span><div class="imagen"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIc569_O47XTz4wgpZmIx8tqFd24M4Uww9X31bsgYSTUJJuLPEhJvE1ZjN&s=10" alt="Ocean Blue"></div><h3>14. Ocean Blue</h3><p>Aroma fresco inspirado en el océano.</p><span class="precio">$899 MXN</span><button onclick="agregar('Ocean Blue',899)">Agregar al carrito</button></article>
+            <!-- Perfume 15 (Hombre) -->
+            <article class="producto" data-nombre="forest" data-cat="hombre"><span class="badge-cat">Hombre</span><div class="imagen"><img src="https://cdn.webshopapp.com/shops/60349/files/479255337/perfume-forest.jpg" alt="Forest"></div><h3>15. Forest</h3><p>Notas de madera y naturaleza.</p><span class="precio">$949 MXN</span><button onclick="agregar('Forest',949)">Agregar al carrito</button></article>
+            <!-- Perfume 16 (Mujer, Hombre -> Unisex) -->
+            <article class="producto" data-nombre="royal" data-cat="unisex"><span class="badge-cat">Unisex</span><div class="imagen"><img src="https://veronnaperfumeria.com/cdn/shop/files/WhatsApp_Image_2025-12-24_at_12.17.50_AM_1_1080x.jpg?v=1766553542" alt="Royal"></div><h3>16. Royal</h3><p>Perfume elegante de alta gama.</p><span class="precio">$1,499 MXN</span><button onclick="agregar('Royal',1499)">Agregar al carrito</button></article>
+            <!-- Perfume 17 (Mujer) -->
+            <article class="producto" data-nombre="diamond" data-cat="mujer"><span class="badge-cat">Mujer</span><div class="imagen"><img src="https://resources.claroshop.com/medios-plazavip/mkt/6118b6830894d_screenshot_2021-05-08-23-29-17-566_cominstagramandroidjpg.jpg" alt="Diamond"></div><h3>17. Diamond</h3><p>Fragancia sofisticada y moderna.</p><span class="precio">$1,399 MXN</span><button onclick="agregar('Diamond',1399)">Agregar al carrito</button></article>
+            <!-- Perfume 18 (Hombre) -->
+            <article class="producto" data-nombre="lemon fresh" data-cat="hombre"><span class="badge-cat">Hombre</span><div class="imagen"><img src="https://m.media-amazon.com/images/I/71SgwTozZXL._AC_UF1000,1000_QL80_.jpg" alt="Lemon Fresh"></div><h3>18. Lemon Fresh</h3><p>Aroma cítrico y refrescante.</p><span class="precio">$699 MXN</span><button onclick="agregar('Lemon Fresh',699)">Agregar al carrito</button></article>
+            <!-- Perfume 19 (Mujer) -->
+            <article class="producto" data-nombre="sun flower" data-cat="mujer"><span class="badge-cat">Mujer</span><div class="imagen"><img src="https://i5.walmartimages.com/asr/dab63ab6-827e-4fdd-8909-3fe238edb905.465f7bf482c016ca84ea5082417d59c1.jpeg" alt="Sun Flower"></div><h3>19. Sun Flower</h3><p>Fragancia floral y luminosa.</p><span class="precio">$849 MXN</span><button onclick="agregar('Sun Flower',849)">Agregar al carrito</button></article>
+            <!-- Perfume 20 (Mujer, Hombre -> Unisex) -->
+            <article class="producto" data-nombre="honey touch" data-cat="unisex"><span class="badge-cat">Unisex</span><div class="imagen"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI4E1r8-Rm1x5TUM456XP8T9ZU_FG0qV6cky65cEZIGPg72TEQKf3geXM&s=10" alt="Honey Touch"></div><h3>20. Honey Touch</h3><p>Aroma dulce y cálido.</p><span class="precio">$899 MXN</span><button onclick="agregar('Honey Touch',899)">Agregar al carrito</button></article>
+            <!-- Perfume 21 (Hombre) -->
+            <article class="producto" data-nombre="galaxy" data-cat="hombre"><span class="badge-cat">Hombre</span><div class="imagen"><img src="https://i.ebayimg.com/images/g/tXgAAeSwP4ZpwCJY/s-l400.jpg" alt="Galaxy"></div><h3>21. Galaxy</h3><p>Fragancia moderna y misteriosa.</p><span class="precio">$1,199 MXN</span><button onclick="agregar('Galaxy',1199)">Agregar al carrito</button></article>
+            <!-- Perfume 22 (Mujer) -->
+            <article class="producto" data-nombre="cherry love" data-cat="mujer"><span class="badge-cat">Mujer</span><div class="imagen"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-8S-extUm5Hy3O23dswAwfNIuHRJAYZjGiQ0kX2taOgB0klIgX2xGqvk&s=10" alt="Cherry Love"></div><h3>22. Cherry Love</h3><p>Aroma frutal y dulce.</p><span class="precio">$799 MXN</span><button onclick="agregar('Cherry Love',799)">Agregar al carrito</button></article>
+            <!-- Perfume 23 (Mujer) -->
+            <article class="producto" data-nombre="red passion" data-cat="mujer"><span class="badge-cat">Mujer</span><div class="imagen"><img src="https://http2.mlstatic.com/D_NQ_NP_722796-MLA89227245849_082025-O.webp" alt="Red Passion"></div><h3>23. Red Passion</h3><p>Fragancia intensa y romántica.</p><span class="precio">$999 MXN</span><button onclick="agregar('Red Passion',999)">Agregar al carrito</button></article>
+            <!-- Perfume 24 (Hombre) -->
+            <article class="producto" data-nombre="night bloom" data-cat="hombre"><span class="badge-cat">Hombre</span><div class="imagen"><img src="https://m.media-amazon.com/images/I/61CCjms7FdL._AC_UF894,1000_QL80_.jpg" alt="Night Bloom"></div><h3>24. Night Bloom</h3><p>Perfume floral para la noche.</p><span class="precio">$1,099 MXN</span><button onclick="agregar('Night Bloom',1099)">Agregar al carrito</button></article>
+            <!-- Perfume 25 (Mujer, Hombre -> Unisex) -->
+            <article class="producto" data-nombre="star essence" data-cat="unisex"><span class="badge-cat">Unisex</span><div class="imagen"><img src="https://cdn.shopify.com/s/files/1/0050/9761/9505/files/6aihkhveized_480x480.webp?v=1673887375" alt="Star Essence"></div><h3>25. Star Essence</h3><p>Fragancia exclusiva de AURA.</p><span class="precio">$1,299 MXN</span><button onclick="agregar('Star Essence',1299)">Agregar al carrito</button></article>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>© 2026 <strong>AURA PERFUMES</strong></p>
+</footer>
+<script>
+    let carrito = JSON.parse(localStorage.getItem("carritoAura")) || [];
+    function actualizarContador() {
+        let contador = document.getElementById("contador");
+        if(contador) contador.textContent = carrito.length;
+    }
+    actualizarContador();
+
+    function agregar(nombre, precio) {
+        carrito.push({ nombre: nombre, precio: precio });
+        localStorage.setItem("carritoAura", JSON.stringify(carrito));
+        actualizarContador();
+        alert("¡" + nombre + " agregado al carrito!");
+    }
+
+    // Lógica para filtrar por URL o buscador
+    let urlParams = new URLSearchParams(window.location.search);
+    let categoriaUrl = urlParams.get("cat");
+    if (categoriaUrl) {
+        filtrarPorCategoria(categoriaUrl);
+    }
+
+    function filtrarPorCategoria(cat) {
+        let productos = document.querySelectorAll(".producto");
+        let banner = document.getElementById("banner-filtro");
+        let nombreCatSpan = document.getElementById("nombre-categoria");
+        
+        banner.style.display = "block";
+        nombreCatSpan.textContent = cat.toUpperCase();
+
+        productos.forEach(prod => {
+            let catProd = prod.getAttribute("data-cat");
+            if (catProd === cat || catProd === "unisex") {
+                prod.style.display = "block";
+            } else {
+                prod.style.display = "none";
+            }
+        });
+    }
+
+    function limpiarCategoria() {
+        window.history.replaceState({}, document.title, window.location.pathname);
+        document.getElementById("banner-filtro").style.display = "none";
+        let productos = document.querySelectorAll(".producto");
+        productos.forEach(prod => prod.style.display = "block");
+    }
+
+    function filtrarProductos() {
+        let filtro = document.getElementById("buscador").value.toLowerCase();
+        let productos = document.querySelectorAll(".producto");
+        productos.forEach(prod => {
+            let nombre = prod.getAttribute("data-nombre");
+            if (nombre.includes(filtro)) {
+                prod.style.display = "block";
+            } else {
+                prod.style.display = "none";
+            }
+        });
+    }
+</script>
+</body>
+</html>
